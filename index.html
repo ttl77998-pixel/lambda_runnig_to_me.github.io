@@ -2,38 +2,55 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Lambda: Signal Lost</title>
+  <title>Shadow Chronicles</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* ===================== BASE ===================== */
     body {
       margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      background: #0b0e14;
-      color: #e8ebff;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0f;
+      color: #e0e0e0;
       scroll-behavior: smooth;
     }
     a { color: inherit; text-decoration: none; }
     section { padding: 80px 20px; max-width: 1200px; margin: auto; }
-    h1 { font-size: clamp(40px, 6vw, 72px); margin: 0; }
-    h2 { font-size: clamp(24px, 4vw, 48px); margin-bottom: 20px; }
+    h1 { font-size: clamp(40px, 6vw, 72px); margin: 0; color: #fff; }
+    h2 { font-size: clamp(24px, 4vw, 48px); margin-bottom: 20px; color: #ccc; }
     p, li { font-size: 18px; line-height: 1.6; }
     ul { padding-left: 20px; }
-    
+
     /* ===================== HERO ===================== */
-    .hero { text-align: center; }
+    .hero {
+      text-align: center;
+      background: linear-gradient(180deg, #0a0a0f 0%, #1b1b29 100%);
+      padding: 150px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      text-shadow: 0 0 20px #ff0055, 0 0 40px #aa00ff;
+    }
+    .hero p {
+      font-size: 20px;
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #aaa;
+    }
     .btn {
       display: inline-block;
-      padding: 14px 24px;
+      padding: 14px 28px;
       border-radius: 14px;
-      background: linear-gradient(135deg,#7c8cff,#6bffd6);
-      color: #0b0e14;
-      font-weight: 800;
-      margin-top: 20px;
+      background: linear-gradient(135deg,#aa00ff,#ff0055);
+      color: #fff;
+      font-weight: 700;
+      margin-top: 30px;
       transition: transform .2s;
     }
     .btn:hover { transform: scale(1.05); }
-    
+
     /* ===================== GRID ===================== */
     .grid {
       display: grid;
@@ -43,16 +60,19 @@
     .card {
       padding: 20px;
       border-radius: 16px;
-      border: 1px solid rgba(124,140,255,.25);
+      border: 1px solid rgba(255,0,85,.25);
       background: rgba(255,255,255,.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,.35);
+      box-shadow: 0 15px 40px rgba(0,0,0,.5);
+      transition: transform .2s;
     }
-    
+    .card:hover { transform: translateY(-5px); }
+
     /* ===================== FOOTER ===================== */
     footer {
       padding: 40px 0;
       text-align: center;
-      color: #9aa4ff;
+      color: #888;
+      border-top: 1px solid rgba(255,255,255,.1);
     }
   </style>
 </head>
@@ -60,8 +80,8 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Λ Lambda: Signal Lost</h1>
-  <p>Un jeu minimaliste où le monde n’existe que quand tu bouges. Chaque mouvement compte, chaque décision peut être fatale.</p>
+  <h1>Shadow Chronicles</h1>
+  <p>Plongez dans un univers sombre où chaque décision compte. Explorez les ténèbres, affrontez vos ennemis et découvrez les secrets cachés.</p>
   <a class="btn" href="#download">Télécharger</a>
 </section>
 
@@ -69,35 +89,35 @@
 <section>
   <h2>Le concept</h2>
   <div class="grid">
-    <div class="card">Chaque mouvement fait avancer le monde.</div>
-    <div class="card">Des zones instables qui disparaissent après quelques ticks.</div>
-    <div class="card">Ennemis intelligents qui copient vos mouvements.</div>
-    <div class="card">Gestion de l’énergie pour chaque action.</div>
-    <div class="card">Stratégie et réflexes combinés.</div>
+    <div class="card">Exploration immersive dans un monde sombre et mystérieux</div>
+    <div class="card">Combats stratégiques et choix qui influencent l’histoire</div>
+    <div class="card">Système de progression et de compétences évolutives</div>
+    <div class="card">Quêtes secrètes et énigmes à résoudre</div>
+    <div class="card">Ambiance sonore et visuelle intense</div>
   </div>
 </section>
 
 <!-- ===== DÉFI ===== -->
 <section>
-  <h2>Pourquoi c’est addictif</h2>
+  <h2>Pourquoi c’est captivant</h2>
   <ul>
-    <li>Le temps n’avance que quand tu bouges</li>
-    <li>Chaque erreur peut être fatale</li>
-    <li>Rejouabilité infinie avec niveaux modulables</li>
-    <li>Design minimaliste pour se concentrer sur le gameplay</li>
+    <li>Chaque choix peut changer le cours de l’histoire</li>
+    <li>Exploration libre mais dangereuse</li>
+    <li>Environnements et ennemis imprévisibles</li>
+    <li>Secrets et récompenses pour les joueurs attentifs</li>
   </ul>
 </section>
 
 <!-- ===== TÉLÉCHARGEMENT ===== -->
 <section id="download">
   <h2>Téléchargement</h2>
-  <p>Disponible sur Windows PC. Prépare-toi à tester tes réflexes et ta stratégie.</p>
+  <p>Disponible sur Windows et Mac. Plongez dans les Shadow Chronicles et testez vos compétences dans l’obscurité.</p>
   <a class="btn" href="#">Télécharger la version 1.0</a>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  © 2026 Lambda: Signal Lost — Jeu minimaliste indépendant
+  © 2026 Shadow Chronicles — Jeu indépendant immersif
 </footer>
 
 </body>
