@@ -1,165 +1,104 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lambda: Running to Me</title>
-  <meta name="description" content="Lambda: Running to Me — un jeu nerveux, stylé et mystérieux. Une expérience single‑page immersive." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Lambda: Signal Lost</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root{
-      --bg:#0b0e14;
-      --panel:#0f1422;
-      --ink:#e8ebff;
-      --muted:#9aa4ff;
-      --accent:#7c8cff;
-      --accent-2:#6bffd6;
-      --danger:#ff6b6b;
-      --radius:18px;
-      --shadow:0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+    /* ===================== BASE ===================== */
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: #0b0e14;
+      color: #e8ebff;
+      scroll-behavior: smooth;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:radial-gradient(1200px 600px at 80% -10%, rgba(124,140,255,.18), transparent 40%), radial-gradient(900px 600px at -10% 10%, rgba(107,255,214,.14), transparent 40%), var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial; scroll-behavior:smooth}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:32px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#9aa4ff); color:#0b0e14;font-weight:800; box-shadow:0 12px 30px rgba(124,140,255,.35); border:0}
-    .btn.secondary{background:transparent;color:var(--ink);box-shadow:none;border:1px solid rgba(124,140,255,.35)}
-    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(124,140,255,.15);color:var(--muted);border:1px solid rgba(124,140,255,.35)}
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,14,20,.85),rgba(11,14,20,.55));backdrop-filter:blur(10px);border-bottom:1px solid rgba(124,140,255,.15)}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    nav .brand{font-weight:900;letter-spacing:.4px}
-    nav .links{display:flex;gap:18px;align-items:center}
-    section{padding:80px 0}
-    .hero{position:relative;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
-    .hero h1{font-size:clamp(40px,6vw,72px);line-height:1.02;margin:18px 0}
-    .hero p{color:#c9d0ff;font-size:18px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(124,140,255,.18);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .mock{aspect-ratio:16/10;border-radius:14px;background:radial-gradient(600px 300px at 60% -20%, rgba(124,140,255,.35), transparent 40%), linear-gradient(180deg,#10162a,#0b0e14); position:relative; overflow:hidden}
-    .scan{position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(124,140,255,.15),transparent);animation:scan 4s linear infinite}
-    @keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
-    .stat{padding:18px}
-    .stat b{font-size:28px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .feature{padding:22px}
-    .feature h3{margin:10px 0}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(124,140,255,.35),transparent)}
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .shot{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(180deg,#10162a,#0b0e14);border:1px solid rgba(124,140,255,.18)}
-    .cta{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    footer{padding:40px 0;color:#aab2ff}
-    @media (max-width:900px){.hero-grid,.cta{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.grid{grid-template-columns:1fr}}
+    a { color: inherit; text-decoration: none; }
+    section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+    h1 { font-size: clamp(40px, 6vw, 72px); margin: 0; }
+    h2 { font-size: clamp(24px, 4vw, 48px); margin-bottom: 20px; }
+    p, li { font-size: 18px; line-height: 1.6; }
+    ul { padding-left: 20px; }
+    
+    /* ===================== HERO ===================== */
+    .hero { text-align: center; }
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg,#7c8cff,#6bffd6);
+      color: #0b0e14;
+      font-weight: 800;
+      margin-top: 20px;
+      transition: transform .2s;
+    }
+    .btn:hover { transform: scale(1.05); }
+    
+    /* ===================== GRID ===================== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 20px;
+    }
+    .card {
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(124,140,255,.25);
+      background: rgba(255,255,255,.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,.35);
+    }
+    
+    /* ===================== FOOTER ===================== */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: #9aa4ff;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand">Λ Lambda: Running to Me</div>
-        <div class="links">
-          <a href="#jeu">Le jeu</a>
-          <a href="#features">Features</a>
-          <a href="#media">Médias</a>
-          <a href="#download" class="btn secondary">Télécharger</a>
-        </div>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero" id="jeu">
-      <div class="container hero-grid">
-        <div>
-          <span class="chip">Runner • Sci‑Fi • Nerveux</span>
-          <h1>Lambda: <br/>Running to Me</h1>
-          <p>Un runner intense et stylé où chaque décision compte. Plonge dans une ambiance sci‑fi minimaliste, affronte le rythme, et cours vers l’inconnu.</p>
-          <div style="display:flex;gap:14px;margin-top:22px">
-            <a class="btn" href="#download">Jouer maintenant</a>
-            <a class="btn secondary" href="#media">Voir le trailer</a>
-          </div>
-          <div class="stats">
-            <div class="card stat"><b>60+</b><div>FPS ultra fluide</div></div>
-            <div class="card stat"><b>∞</b><div>Rejouabilité</div></div>
-            <div class="card stat"><b>Λ</b><div>Univers unique</div></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mock">
-            <div class="scan"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>Λ Lambda: Signal Lost</h1>
+  <p>Un jeu minimaliste où le monde n’existe que quand tu bouges. Chaque mouvement compte, chaque décision peut être fatale.</p>
+  <a class="btn" href="#download">Télécharger</a>
+</section>
 
-    <div class="divider"></div>
+<!-- ===== CONCEPT ===== -->
+<section>
+  <h2>Le concept</h2>
+  <div class="grid">
+    <div class="card">Chaque mouvement fait avancer le monde.</div>
+    <div class="card">Des zones instables qui disparaissent après quelques ticks.</div>
+    <div class="card">Ennemis intelligents qui copient vos mouvements.</div>
+    <div class="card">Gestion de l’énergie pour chaque action.</div>
+    <div class="card">Stratégie et réflexes combinés.</div>
+  </div>
+</section>
 
-    <section id="features">
-      <div class="container">
-        <h2>Pourquoi Lambda ?</h2>
-        <div class="grid">
-          <div class="card feature">
-            <span class="chip">Gameplay</span>
-            <h3>Rapide & précis</h3>
-            <p>Contrôles réactifs, rythme soutenu, et mécaniques faciles à apprendre mais difficiles à maîtriser.</p>
-          </div>
-          <div class="card feature">
-            <span class="chip">Direction artistique</span>
-            <h3>Sci‑Fi minimaliste</h3>
-            <p>Des formes nettes, des contrastes forts et une identité visuelle mémorable.</p>
-          </div>
-          <div class="card feature">
-            <span class="chip">Progression</span>
-            <h3>Défis constants</h3>
-            <p>Nouveaux obstacles, patterns évolutifs et montée de tension continue.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- ===== DÉFI ===== -->
+<section>
+  <h2>Pourquoi c’est addictif</h2>
+  <ul>
+    <li>Le temps n’avance que quand tu bouges</li>
+    <li>Chaque erreur peut être fatale</li>
+    <li>Rejouabilité infinie avec niveaux modulables</li>
+    <li>Design minimaliste pour se concentrer sur le gameplay</li>
+  </ul>
+</section>
 
-    <section id="media">
-      <div class="container">
-        <h2>Médias</h2>
-        <p>Trailer et captures d’écran (placeholders prêts à remplacer).</p>
-        <div class="gallery">
-          <div class="shot"></div>
-          <div class="shot"></div>
-          <div class="shot"></div>
-          <div class="shot"></div>
-        </div>
-      </div>
-    </section>
+<!-- ===== TÉLÉCHARGEMENT ===== -->
+<section id="download">
+  <h2>Téléchargement</h2>
+  <p>Disponible sur Windows PC. Prépare-toi à tester tes réflexes et ta stratégie.</p>
+  <a class="btn" href="#">Télécharger la version 1.0</a>
+</section>
 
-    <section id="download">
-      <div class="container cta">
-        <div>
-          <h2>Prêt à courir ?</h2>
-          <p>Télécharge Lambda: Running to Me et lance‑toi dans une course futuriste inoubliable.</p>
-          <div style="display:flex;gap:14px;margin-top:18px">
-            <a class="btn" href="#">Télécharger (PC)</a>
-            <a class="btn secondary" href="#">Itch.io / Steam</a>
-          </div>
-        </div>
-        <div class="card"><div class="mock"></div></div>
-      </div>
-    </section>
-  </main>
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2026 Lambda: Signal Lost — Jeu minimaliste indépendant
+</footer>
 
-  <footer>
-    <div class="container">
-      <div class="divider" style="margin-bottom:18px"></div>
-      <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap">
-        <div>© <span id="y"></span> Lambda: Running to Me</div>
-        <div>Contact • Presse • Réseaux</div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
